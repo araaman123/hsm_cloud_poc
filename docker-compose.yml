@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  softhsm:
+    image: cremuzzi/softhsm2
+    container_name: softhsm
+    user: root
+    entrypoint: ["/bin/sh"]
+    volumes:
+      - ./softhsm:/var/lib/softhsm
+      - ./softhsm2.conf:/etc/softhsm/softhsm2.conf
+    environment:
+      SOFTHSM2_CONF: /etc/softhsm/softhsm2.conf
+    stdin_open: true
+    tty: true
+
